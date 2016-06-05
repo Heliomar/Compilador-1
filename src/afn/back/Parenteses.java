@@ -30,8 +30,11 @@ public class Parenteses extends ExpressaoAbstrata{
             //expressao entre parenteses + operador
             transicao = parser.analisar(parser.analisar(temp), operador);
             //resolve o conteudo pós parenteses
+            //if(prox_expressao.equals(""))
             transicaoB = parser.analisar(prox_expressao);
-            transicao = new  Concatenar().resolver(transicao, transicaoB);
+            if(transicaoB != null){
+                transicao = new  Concatenar().resolver(transicao, transicaoB);
+            }
         } else {
             transicao = parser.analisar(expressao);
         }
